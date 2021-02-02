@@ -13,13 +13,12 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/workoutTrackerdb",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+const uri = process.env.MONGODB_URI;
+
+mongoose.connect(uri || "mongodb://localhost/workoutTrackerdb", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const databaseUrl = "workoutTrackerdb";
 const collections = ["workouts"];
