@@ -13,8 +13,8 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-const uri = process.env.MONGODB_URI || "mongodb://localhost/workoutTrackerdb";
-
+const uri = process.env.MONGODB_URI;
+// || "mongodb://localhost/workoutTrackerdb";
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -126,6 +126,6 @@ app.put("/api/workouts/:id", (req, res) => {
   );
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("App running!");
 });
